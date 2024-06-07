@@ -1,0 +1,35 @@
+#searchFormContainer {
+  position: absolute;
+  top: 25%;
+  left: 25%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+}
+
+#searchForm {
+  display: none;
+}
+#searchResultsContainer {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999;
+}
+
+#searchResults {
+  display: none;
+}
+
+#map{
+  height: 496px;
+  width: 100%;
+}
+
+#showtimkiem {
+  position: absolute; /* Đảm bảo nút được đặt tuyệt đối */
+  height: 30px;
+  width: 30px;
+  top: 75px; /* Điều chỉnh vị trí từ đỉnh của bản đồ */
+  left: 10px; /* Điều chỉnh vị trí từ phía bên phải/trái của bản đồ */
+  z-index: 1000; /* Đảm bảo nút được hiển thị trên các phần khác */
+}

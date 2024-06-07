@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebGIS HuyenCanGio TPHCM</title>
+    <!-- Latest compiled and minified CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet">
+    <!-- Latest compiled JavaScript -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"></script>
+    <!-- Link đến CSS -->
+    <link rel="stylesheet" 
+      href="style.css">
+    <!-- Link W3.CSS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" 
+      href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet"
+      href="https://www.w3schools.com/lib/w3-colors-win8.css">
+
+    <link rel="stylesheet" 
+      href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css">
+    <script 
+      src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+
+  </head>
+  <body>
+    <!-- Code container-fluid Full màn hình chia thành 12 cột, Hiển thị đầu tiên -->
+    <div class="container-fluid">
+      <!-- Hàng 1 chứa nội dung Đầu tiên -->
+      <div class="row" style="height: 63px">
+        <nav class="navbar navbar-expand-sm navbar-text-dark w3-amber">
+          <div class="container-fluid">
+            <a class="navbar-brand" href="javascript:void(0)">
+              <h3><strong>Huyện Cần Giờ</strong></h3>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mynavbar">
+              <ul class="navbar-nav me-auto">
+                <li class="nav-item">
+                  <a class="nav-link" href="javascript:void(0)">
+                    <button type="button" class="btn btn-outline-dark" id="home">
+                      Trang chủ <i class="fa-solid fa-house"></i>
+                    </button>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <div class="nav-link" href="javascript:void(0)">
+                    <div class="dropdown">
+                      <button type="button" class="btn btn-outline-dark dropdown-toggle" data-bs-toggle="dropdown">
+                        Bản đồ nền <i class="fa-solid fa-map"></i>
+                      </button>
+                      <ul class="dropdown-menu" id="bandonen">
+                        <li><a class="dropdown-item" href="#">Ranh giới Huyện Cần Giờ</a></li>
+                        <li><a class="dropdown-item" href="#">Ranh giới Thị trấn Cần Thạnh</a></li>
+                        <li><a class="dropdown-item" href="#">Ranh giới Xã An Thới Đông</a></li>
+                        <li><a class="dropdown-item" href="#">Ranh giới Xã Bình Khánh</a></li>
+                        <li><a class="dropdown-item" href="#">Ranh giới Xã Long Hòa</a></li>
+                        <li><a class="dropdown-item" href="#">Ranh giới Xã Lý Nhơn</a></li>
+                        <li><a class="dropdown-item" href="#">Ranh giới Xã Tam Thôn Hiệp</a></li>
+                        <li><a class="dropdown-item" href="#">Ranh giới Xã Thạnh An</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </li>
+                <li class="nav-item">
+                  <div class="nav-link" href="javascript:void(0)">
+                    <div class="dropdown">
+                      <button type="button" class="btn btn-outline-dark dropdown-toggle" data-bs-toggle="dropdown">
+                        Địa chính <i class="fa-solid fa-earth-asia"></i>
+                      </button>
+                      <ul class="dropdown-menu" id="diachinhhome">
+                        <li><a class="dropdown-item" href="#">Thị trấn Cần Thạnh</a></li>
+                        <li><a class="dropdown-item" href="#">Xã An Thới Đông</a></li>
+                        <li><a class="dropdown-item" href="#">Xã Bình Khánh</a></li>
+                        <li><a class="dropdown-item" href="#">Xã Long Hòa</a></li>
+                        <li><a class="dropdown-item" href="#">Xã Lý Nhơn</a></li>
+                        <li><a class="dropdown-item" href="#">Xã Tam Thôn Hiệp</a></li>
+                        <li><a class="dropdown-item" href="#">Xã Thạnh An</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </li>
+                <li class="nav-item">
+                  <div class="nav-link" href="javascript:void(0)">
+                    <div class="dropdown">
+                      <button type="button" class="btn btn-outline-dark dropdown-toggle" data-bs-toggle="dropdown">
+                        Quy hoạch <i class="fa-solid fa-globe"></i>
+                      </button>
+                      <ul class="dropdown-menu" id="quyhoachhome">
+                        <li><a class="dropdown-item" href="#">Thị trấn Cần Thạnh</a></li>
+                        <li><a class="dropdown-item" href="#">Xã An Thới Đông</a></li>
+                        <li><a class="dropdown-item" href="#">Xã Bình Khánh</a></li>
+                        <li><a class="dropdown-item" href="#">Xã Long Hòa</a></li>
+                        <li><a class="dropdown-item" href="#">Xã Lý Nhơn</a></li>
+                        <li><a class="dropdown-item" href="#">Xã Tam Thôn Hiệp</a></li>
+                        <li><a class="dropdown-item" href="#">Xã Thạnh An</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="javascript:void(0)">
+                    <button type="button" class="btn btn-outline-dark">Hỗ trợ <i
+                        class="fa-solid fa-handshake-angle"></i>
+                    </button>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="https://daotao.hcmunre.edu.vn/" target="_blank">
+                    <button type="button" class="btn btn-outline-dark">
+                      Giới thiệu <i class="fa-solid fa-circle-info"></i>
+                    </button>
+                  </a>
+                </li>
+              </ul>
+              <form class="d-flex">
+                <button class="btn btn-success" type="button" data-bs-toggle="offcanvas" data-bs-target="#tracuu">
+                  <strong>Tra cứu</strong> <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+              </form>
+            </div>
+          </div>
+        </nav>
+      </div>
+      <!-- Hàng 2 chứa Bản đồ-->
+      <div class="row">
+        <div class="col-md-12" id="map">
+
+          
+          <button id="showtimkiem" class="btn w3-button w3-blue">
+            <i class="fa-brands fa-searchengin" style="color: #7bff00;"></i>
+          </button>
+        </div>
+      </div>
+      <!-- Hàng 3 chứa nội dung Chân của Web-->
+      <div class="row">
+        <div class="col-md-12 bg-success-subtle">
+          <h6 style="text-align: center;">
+            <strong>
+              Lê Minh Phong - 
+            0950040002@sv.hcmunre.edu.vn - 
+            Trường Đại học Tài nguyên và Môi
+              trường Thành phố Hồ Chí Minh
+            </strong>
+            </h6>
+        </div>
+      </div>
+    </div>
+    <!-- Code của thẻ div offcanvas xuất sau khi ấn vào nút Tra cứu-->
+    <div class="offcanvas offcanvas-end bg-dark-subtle text-dark w-50"
+      id="tracuu">
+      <div class="offcanvas-header">
+        <h3 class="offcanvas-title">Tra cứu thông tin</h3>
+        <button type="button" class="btn-close btn-close-white"
+          data-bs-dismiss="offcanvas"></button>
+      </div>
+      <div class="offcanvas-body">
+        <div class="row">
+          <div class="col-md-6">
+
+            <select class="form-select bg-danger-subtle mb-3"
+              id="chondonvihanhchinh" onchange="showSelected()">
+              <option>Chọn đơn vị hành chính</option>
+              <option>Thị trấn Cần Thạnh</option>
+              <option>Xã An Thới Đông</option>
+              <option>Xã Bình Khánh</option>
+              <option>Xã Long Hòa</option>
+              <option>Xã Lý Nhơn</option>
+              <option>Xã Tam Thôn Hiệp</option>
+              <option>Xã Thạnh An</option>
+            </select>
+
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="input-group input-group-sm mb-3">
+              <span class="input-group-text bg-warning-subtle">
+                <strong>Tờ số</strong>
+              </span>
+              <input type="number" min="1" class="form-control" id="soto" placeholder="Nhập số tờ bản đồ" name="soto">
+            </div>
+            <div class="input-group input-group-sm mb-3">
+              <span class="input-group-text bg-warning-subtle">
+                <strong>Loại đất</strong>
+              </span>
+              <input type="text" class="form-control" id="loaidat"
+                placeholder="Nhập loại đất" name="loaidat">
+            </div>
+            <button type="Search" class="w3-button w3-light-blue w3-border w3-border-black w3-round-large w-100" style="height: 35px" id="search">
+              <strong>Tìm kiếm</strong>
+            </button>
+          </div>
+          <div class="col-md-6">
+            <div class="input-group input-group-sm mb-3">
+              <span class="input-group-text bg-warning-subtle">
+                <strong>Thửa số</strong>
+              </span>
+              <input type="number" min="1" class="form-control" id="sothua" placeholder="Nhập số thửa đất" name="sothua">
+            </div>
+            <div class="input-group input-group-sm mb-3">
+              <span class="input-group-text bg-warning-subtle">
+                <strong>Quy hoạch</strong>
+              </span>
+              <input type="text" class="form-control" id="loaiquyhoach" placeholder="Nhập loại đất quy hoạch" name="loaiquyhoach">
+            </div>
+            <button type="reset" class="w3-button w3-light-blue w3-border w3-border-black w3-round-large w-100" style="height: 35px" id="reset">
+              <strong>Nhập lại</strong>
+            </button>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 mt-2">
+            <div class="input-group input-group-sm mb-3">
+              <button class="btn bg-warning btn-outline-dark w-100" type="button" data-bs-toggle="offcanvas" data-bs-target="#toado">
+                <i class="fa-solid fa-location-crosshairs"></i> Nhập tọa độ Thửa đất
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="container mt-3">
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs" role="tablist">
+              <li class="nav-item">
+                <a class="nav-link active" data-bs-toggle="tab" href="#diachinh">Địa chính</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="tab" href="#quyhoach">Quy hoạch</a>
+              </li>
+            </ul>
+
+            <!-- Tab panes -->
+            <div class="tab-content">
+              <div id="diachinh" class="container tab-pane active"><br>
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th>Số tờ</th>
+                      <th>Số thửa</th>
+                      <th>Loại đất</th>
+                      <th>Chủ sử dụng</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>1</td>
+                      <td>1</td>
+                      <td>ONT</td>
+                      <td>LMP</td>
+                    </tr>
+                    <tr>
+                      <td>2</td>
+                      <td>2</td>
+                      <td>CLN</td>
+                      <td>LMP</td>
+                    </tr>
+                    <tr>
+                      <td>3</td>
+                      <td>3</td>
+                      <td>ONT+CLN</td>
+                      <td>LMP</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div id="quyhoach" class="container tab-pane fade"><br>
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th>Số tờ</th>
+                      <th>Số thửa</th>
+                      <th>Loại đất</th>
+                      <th>Quy hoạch</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>1</td>
+                      <td>1</td>
+                      <td>ONT</td>
+                      <td>ODT</td>
+                    </tr>
+                    <tr>
+                      <td>2</td>
+                      <td>2</td>
+                      <td>CLN</td>
+                      <td>ONT</td>
+                    </tr>
+                    <tr>
+                      <td>3</td>
+                      <td>3</td>
+                      <td>BHK</td>
+                      <td>ODT</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Code của thẻ div offcanvas xuất sau khi ấn vào nút Nhập tọa độ Thửa đất -->
+    <div class="offcanvas offcanvas-end bg-warning-subtle w-50" id="toado">
+      <div class="offcanvas-header">
+        <h2 class="offcanvas-title">Nhập tọa độ Thửa đất</h2>
+        <button type="button" class="btn-close"
+          data-bs-dismiss="offcanvas"></button>
+      </div>
+      <div class="offcanvas-body">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="container mt-3">
+              <table Class="table table-striped">
+                <thead>
+                    <tr>
+                        <th style="width: 10%;">Điểm</th>
+                        <th style="width: 35%;">Tọa độ X</th>
+                        <th style="width: 35%;">Tọa độ Y</th>
+                        <th> </th>
+                    </tr>
+                </thead>
+                <tbody id="myTableBody">
+                    <!-- Dữ liệu sẽ được thêm vào đây bằng JavaScript -->
+                </tbody>
+            </table>
+            <div class="row">
+                <div class="col-md-3">
+                    <button class="btn btn-primary me-2" onclick="addRow()">Thêm</button>
+                </div>
+                <div class="col-md-6"> </div>
+                <div class="col-md-3">
+                    <button class="btn btn-danger" onclick="deleteAllRows()">Xóa tất cả</button>
+                </div>
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="row pt-2">
+          <div class="col-md-12">
+            <button type="Search" class="btn bg-success-subtle btn-outline-dark w-100" id="searchtoado">
+              <strong>Tìm kiếm</strong>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Code cho Nút Tìm kiếm nằm ngoài chổ bản đồ-->
+    <div class="searchFormContainer" id="searchFormContainer">
+      <div id="searchForm" class="container">
+        <div class="alert alert-success">
+          <div class="row">
+            <div class="col-md-6">
+              <label for="searchType" class="form-label">Chọn Quận/Huyện:</label>
+              <select id="chonquanhuyen" class="form-select">
+                <option>Chọn Quận/Huyện</option>
+                <option>Huyện Cần Giờ</option>
+                <option>Quận 1</option>
+                <option>Quận 2</option>
+                <option>Quận 3</option>
+                <option>Quận 4</option>
+              </select>
+            </div>
+            <div class="col-md-6">
+              <label for="searchType" class="form-label">Chọn Phường/Xã:</label>
+              <select id="chonphuongxa" class="form-select">
+                <option>Chọn Phường/Xã</option>
+                <option>Thị trấn Cần Thạnh</option>
+                <option>Xã An Thới Đông</option>
+                <option>Xã Bình Khánh</option>
+                <option>Xã Long Hòa</option>
+                <option>Xã Lý Nhơn</option>
+                <option>Xã Tam Thôn Hiệp</option>
+                <option>Xã Thạnh An</option>
+              </select>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 pt-2">
+              <div class="input-group input-group-sm mb-3">
+                <span class="input-group-text bg-warning-subtle"><strong>Tờ số</strong></span>
+                <input type="number" min="1" class="form-control" id="sototimkiem" placeholder="Nhập số tờ" name="sototimkiem">
+              </div>
+            </div>
+            <div class="col-md-6 pt-2">
+              <div class="input-group input-group-sm mb-3">
+                <span class="input-group-text bg-warning-subtle"><strong>Thửa số</strong></span>
+                <input type="number" min="1" class="form-control" id="sothuatimkiem" placeholder="Nhập số thửa" name="sothuatimkiem">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-7"></div>
+            <div class="col-md-5 pt-2">
+              <button id="searchBtn" class="btn btn-primary">Thực hiện</button>
+              <button id="hideSearchFormBtn" class="btn btn-secondary">Hủy bỏ</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8"></div>
+        <div class="col-md-4">
+          <div class="searchResultsContainer" id="searchResultsContainer">
+            <div id="searchResults" class="bg-light p-3 border">
+              <div class="row">
+                <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+                  <div class="container-fluid">
+                    <a class="navbar-brand" href="javascript:void(0)">Thông tin</a>
+                    <div class="collapse navbar-collapse" id="mynavbar">
+                      <ul class="navbar-nav me-auto">
+                        <li class="nav-item">
+                          <a class="nav-link" href="javascript:void(0)"> </a>
+                        </li>
+                      </ul>
+                      <button id="hideSearchResultsBtn" class="btn btn-secondary mt-3">
+                        <i class="fa-solid fa-minus"></i>
+                      </button>
+                    </div>
+                  </div>
+                </nav>
+              </div>
+              <div class="row">
+                <div class="alert alert-success">
+                  Thông tin thửa đất
+                  <div id="thongtinthuadat"> </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="alert alert-success">
+                  Thông tin quy hoạch
+                  <div id="thongtinquyhoach"> </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </body>
+  <script src="main.js"></script>
+  <script src="map.js"></script>
+</html>
